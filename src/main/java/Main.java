@@ -1,9 +1,13 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
 public class Main {
 
     final static double X = -10;
     final static double EPS = 0.0001;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
 
@@ -13,6 +17,19 @@ public class Main {
         System.out.println("SINX");
         System.out.println(sin.getValue(X, EPS));
         System.out.println(Math.sin(X));
+        Writer writerSin = new FileWriter("src/main/resources/Sin.csv");
+        Writer writerCos = new FileWriter("src/main/resources/Cos.csv");
+        Writer writerTg = new FileWriter("src/main/resources/Tg.csv");
+        Writer writerLog5 = new FileWriter("src/main/resources/Log5.csv");
+        Writer writerLog10 = new FileWriter("src/main/resources/Log10.csv");
+        Writer writerLn = new FileWriter("src/main/resources/Ln.csv");
+        Writer writerCsc = new FileWriter("src/main/resources/Csc.csv");
+        Writer writerFunction = new FileWriter("src/main/resources/Function.csv");
+
+        for (double i = -10; i < 10; i+= 0.5){
+
+        }
+
 
         System.out.println("COSX");
         System.out.println(cos.getValue(X, EPS));

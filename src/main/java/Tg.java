@@ -1,3 +1,9 @@
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+
+import java.io.IOException;
+import java.io.Writer;
+
 public class Tg {
 
     private final Sin sin;
@@ -32,5 +38,14 @@ public class Tg {
         sinx = sin.getValue(x, epsx);
         res1 = sinx/cosx;
         return res1;
+    }
+    public double writeResultToCSV(double x, double eps, Writer out) {
+        double res = getValue(x, eps);
+        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+            printer.printRecord(x, res);
+        } catch (IOException e) {
+            System.out.println("Файл не найден");
+        }
+        return res;
     }
 }

@@ -1,3 +1,9 @@
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+
+import java.io.IOException;
+import java.io.Writer;
+
 public class Function {
 
     private final Sin sin;
@@ -21,5 +27,13 @@ public class Function {
             return Math.pow((((Math.pow(log.getValue(10, x, eps), 3) - log.getValue(5, x, eps)) / log.getValue(5, x, eps)) + ln.getValue(x, eps)), 2);
         }
     }
-
+    public double writeResultToCSV(double x, double eps, Writer out) {
+        double res = solve(x, eps);
+        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+            printer.printRecord(x, res);
+        } catch (IOException e) {
+            System.out.println("Файл не найден");
+        }
+        return res;
+    }
 }
