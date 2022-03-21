@@ -37,6 +37,7 @@ public class Cos {
         try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
             printer.printRecord(x, res);
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Файл не найден");
         }
         return res;

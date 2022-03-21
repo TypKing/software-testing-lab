@@ -25,7 +25,7 @@ public class Tg {
         cosx = cos.getValue(x, epsx);
         sinx = sin.getValue(x, epsx);
         double res1 = sinx/cosx;
-        System.out.println(res1 + " - res1 " + res + " -res");
+//        System.out.println(res1 + " - res1 " + res + " -res");
         while (Math.abs(res1 - res) > eps){
             res = res1;
             epsx /= 2;
