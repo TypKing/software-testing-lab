@@ -40,7 +40,8 @@ public class Sin {
 
     public double writeResultToCSV(double x, double eps, Writer out) {
         double res = getValue(x, eps);
-        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+        try{
+            CSVPrinter printer = CSVFormat.DEFAULT.print(out);
             printer.printRecord(x, res);
         } catch (IOException e) {
             System.out.println("Файл не найден");

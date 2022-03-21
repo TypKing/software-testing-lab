@@ -16,9 +16,10 @@ public class Log {
         return ln.getValue(b, eps) / ln.getValue(a, eps);
     }
 
-    public double writeResultToCSV(double a, double x, double eps, Writer out) {
+    public double writeResultToCSV(double a,double x, double eps, Writer out) {
         double res = getValue(a, x, eps);
-        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+        try{
+            CSVPrinter printer = CSVFormat.DEFAULT.print(out);
             printer.printRecord(x, res);
         } catch (IOException e) {
             System.out.println("Файл не найден");

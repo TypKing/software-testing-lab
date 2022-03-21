@@ -34,10 +34,10 @@ public class Cos {
     }
     public double writeResultToCSV(double x, double eps, Writer out) {
         double res = getValue(x, eps);
-        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+        try{
+            CSVPrinter printer = CSVFormat.DEFAULT.print(out);
             printer.printRecord(x, res);
         } catch (IOException e) {
-            e.printStackTrace();
             System.out.println("Файл не найден");
         }
         return res;

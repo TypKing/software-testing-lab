@@ -21,15 +21,21 @@ public class Function {
     }
 
     public double solve(double x, double eps) {
+        Double result;
         if (x <= 0) {
-            return Math.pow((((Math.pow(tg.getValue(x, eps),2) + csc.getValue(x,eps)) - csc.getValue(x, eps)) / sin.getValue(x,eps)), 2);
+            result = Math.pow((((Math.pow(tg.getValue(x, eps),2) + csc.getValue(x,eps)) - csc.getValue(x, eps)) / sin.getValue(x,eps)), 2);
         } else {
-            return Math.pow((((Math.pow(log.getValue(10, x, eps), 3) - log.getValue(5, x, eps)) / log.getValue(5, x, eps)) + ln.getValue(x, eps)), 2);
+            result = Math.pow((((Math.pow(log.getValue(10, x, eps), 3) - log.getValue(5, x, eps)) / log.getValue(5, x, eps)) + ln.getValue(x, eps)), 2);
         }
+        if (result > 1000000000 || result < -1000000000){
+            return Double.NaN;
+        }
+        return result;
     }
     public double writeResultToCSV(double x, double eps, Writer out) {
         double res = solve(x, eps);
-        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+        try{
+            CSVPrinter printer = CSVFormat.DEFAULT.print(out);
             printer.printRecord(x, res);
         } catch (IOException e) {
             System.out.println("Файл не найден");

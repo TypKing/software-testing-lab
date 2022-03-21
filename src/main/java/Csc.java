@@ -17,19 +17,20 @@ public class Csc {
             return Double.NaN;
         }
         double res = 1/sin.getValue(x, eps);
-        double epsx = eps/10;
-        double res1 = 1/sin.getValue(x, epsx);
-        while (Math.abs(res1 - res) > eps){
-            res = res1;
-            epsx /=10;
-            res1 = 1/sin.getValue(x, epsx);
-        }
-        res1 = 1/sin.getValue(x, epsx/2);
-        return res1;
+//        double epsx = eps/10;
+//        double res1 = 1/sin.getValue(x, epsx);
+//        while (Math.abs(res1 - res) > eps){
+//            res = res1;
+//            epsx /=10;
+//            res1 = 1/sin.getValue(x, epsx);
+//        }
+//        res1 = 1/sin.getValue(x, epsx/2);
+        return res;
     }
     public double writeResultToCSV(double x, double eps, Writer out) {
         double res = getValue(x, eps);
-        try (CSVPrinter printer = CSVFormat.DEFAULT.print(out)) {
+        try{
+            CSVPrinter printer = CSVFormat.DEFAULT.print(out);
             printer.printRecord(x, res);
         } catch (IOException e) {
             System.out.println("Файл не найден");
