@@ -23,7 +23,7 @@ public class Main {
         Writer writerLn = new FileWriter("src/main/resources/CSVOutput/LnOut.csv");
         Writer writerCsc = new FileWriter("src/main/resources/CSVOutput/CscOut.csv");
         Writer writerFunction = new FileWriter("src/main/resources/CSVOutput/FunctionOut.csv");
-        for (double i = -10; i <= 10; i+= 0.2){
+        for (double i = -10; i <= 10; i+= 0.1){
             sin.writeResultToCSV(i,EPS,writerSin);
             writerSin.flush();
             cos.writeResultToCSV(i,EPS,writerCos);
